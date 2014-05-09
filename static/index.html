@@ -1,0 +1,68 @@
+<!doctype html>
+<html ng-app='listManipulation'>
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="list_manipulation.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+  </head>
+  <body>
+    
+    <div data-ng-controller="ListCtrl">
+      
+      <h3>Clients Table:</h3>
+
+      <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+              <th style="width:10%">#</th>
+              <th style="width:20%">Name</th>
+              <th style="width:20%">Age</th>
+              <th style="width:40%">Designation</th>
+              <th style="width:30%">Company</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="client in clients">
+            <td>{{$index + 1}}</td>
+            <td><em>{{client.name}}</em></td>
+            <td>{{client.age}}</td>
+           <td>{{client.designation}}</td>
+            <td>{{client.company.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+              <th style="width:20%">Age</th>
+              <th style="width:20%">count</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="client in clients | ageCountFilter">
+            <td>{{client.age}}</td>
+            <td>{{client.count}}</td>
+          </tr>
+        </tbody>
+      </table>
+    
+
+      <!-- <table class="table table-hover table-striped">
+          <thead>
+              <tr>
+                <th style="width:20%">company</th>
+                <th style="width:20%">avg age</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="client in clients | avgAgeFilter">
+              <td>{{client.company}}</td>
+              <td>{{client.avg}}</td>
+            </tr>
+          </tbody>
+        </table> -->
+
+      </div>
+  </body>
+</html>
