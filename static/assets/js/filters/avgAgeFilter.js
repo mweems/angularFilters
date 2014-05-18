@@ -11,9 +11,6 @@ angular.module('App.filters', []).filter('avgAgeFilter', [function () {
       } else {
           companyTotalAges[client.company.name] = client.age;
         }
-    });
-
-    angular.forEach(clients, function (client) {
       if (companyNumAges[client.company.name]){
         companyNumAges[client.company.name] += 1;
       } else {
@@ -21,10 +18,11 @@ angular.module('App.filters', []).filter('avgAgeFilter', [function () {
         }
     });
 
+//try using hash value access to make this one loop
     angular.forEach(companyTotalAges, function (totAges, ageCompany){
       angular.forEach(companyNumAges, function (numAges, numCompany){
         if (ageCompany == numCompany){
-          avgAges[ageCompany] = avg = totAges/numAges;
+          avgAges[ageCompany] = totAges/numAges;
         }
       })
     });
